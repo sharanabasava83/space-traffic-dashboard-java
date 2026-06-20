@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Orbital Traffic Control</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-eyebrow">LIVE TRACKING SYSTEM</span>
+      <h1>ORBITAL TRAFFIC CONTROL</h1>
+    </div>
+    <div class="status-cluster">
+      <div class="status-chip" id="conn-chip">
+        <span class="dot" id="conn-dot"></span>
+        <span id="conn-text">CONNECTING</span>
+      </div>
+      <div class="status-chip">
+        <span class="chip-label">TRACKED</span>
+        <span class="chip-value" id="sat-count">--</span>
+      </div>
+      <div class="status-chip" id="alert-chip">
+        <span class="chip-label">ALERTS</span>
+        <span class="chip-value" id="alert-count">--</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="viewport-panel">
+      <div class="radar-ring"></div>
+      <div class="scanline"></div>
+      <canvas id="globe-canvas"></canvas>
+      <div class="viewport-footer">
+        <span id="sim-clock">--:--:--</span>
+        <span class="viewport-hint">DRAG TO ROTATE · SCROLL TO ZOOM</span>
+      </div>
+    </section>
+
+    <aside class="telemetry-panel">
+      <h2>TELEMETRY <span class="panel-sub">/ fleet</span></h2>
+      <div class="table-wrap">
+        <table id="sat-table">
+          <thead>
+            <tr>
+              <th>NAME</th>
+              <th>ALT KM</th>
+              <th>VEL KM/S</th>
+            </tr>
+          </thead>
+          <tbody id="sat-table-body">
+          </tbody>
+        </table>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="alerts-strip">
+    <h2>COLLISION ALERTS <span class="panel-sub">/ proximity &lt; 150km</span></h2>
+    <div id="alerts-list" class="alerts-list">
+      <div class="alert-empty">No active collision risks detected.</div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
